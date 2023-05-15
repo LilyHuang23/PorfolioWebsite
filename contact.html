@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lily Huang Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Portfolio</a>
+        <nav class="navbar">
+            <a href="index.html" style="--i:10;" class="active">Home</a>
+            <!-- <a href="#" style="--i:12;">Project</a> -->
+            <a href="contact.html" style="--i:13;">Contact</a>
+
+        </nav>
+        <div class="toggle">
+            <i class="bx bx-moon toggle-icon"></i>
+        </div>
+    </header>
+    <div class="container">
+        <div class="form">
+        <div class="contact-info">
+            <h3 class="title">Let's get in touch</h3>
+            <p class="text">################</p>
+            <div class="info">
+                <div class="information">
+                    <i class='icon bx bx-current-location'></i>         
+                    <p>location</p>
+                </div>
+                <div class="information">
+                    <i class='icon bx bx-envelope' ></i>
+                    <p>email</p>
+                </div>
+                <div class="information">
+                    <i class='icon bx bx-phone' ></i>
+                    <p>phone</p>
+                </div>
+            </div>
+            <div class="social-media-contact">
+                <p>Contact with me</p>
+                <div class="social-icons">
+                    <a href="www.linkedin.com/in/lily-huang-yl"><i class='bx bxl-linkedin' ></i></a>
+                    <a href="https://github.com/LilyHuang23"><i class='bx bxl-github' ></i></a>
+                    <a href="https://www.instagram.com/iamlilyhuang/"><i class='bx bxl-instagram-alt' ></i></a>                </div>
+            </div>
+        </div>
+        <div class="contact-form">
+            <form action="contact.html">
+                <h3 class="title">Contact Me</h3>
+                <div class="input-container">
+                    <input type="text" name="name" class="input" required />
+                    <label for="">Full Name</label>
+                    <span>Full Name</span>
+                </div>
+                <div class="input-container">
+                    <input type="email" name="email" class="input" required />
+                    <label for="">Email</label>
+                    <span>Email</span>
+                </div>
+                <div class="input-container">
+                    <input type="phone" name="phone" class="input" />
+                    <label for="">Phone</label>
+                    <span>Phone</span>
+                </div>
+                <div class="input-container textarea focus">
+                    <textarea name="message" class="input"></textarea>
+                    <label for="">Message</label>
+                    <span>Message</span>
+                </div>
+                <input type="submit" value="Send" class="submit-btn" />
+            </form>
+        </div>
+    </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
