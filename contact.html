@@ -1,77 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lily Huang Portfolio Website</title>
+    <title>聯絡我 - Lily Huang</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
-<body>
+<body data-i18n-title="title.contact">
     <header class="header">
         <a href="index.html" class="logo">Portfolio</a>
+        <i class='bx bx-menu' id="menu-icon"></i>
         <nav class="navbar">
-            <a href="index.html" style="--i:10;" class="active">Home</a>
-            <!-- <a href="#" style="--i:12;">Project</a> -->
-            <a href="contact.html" style="--i:13;">Contact</a>
-
+            <a href="index.html" style="--i:10;" data-i18n="nav.home">首頁</a>
+            <a href="project.html" style="--i:11;" data-i18n="nav.projects">作品集</a>
+            <a href="resume.html" style="--i:12;" data-i18n="nav.resume">履歷</a>
+            <a href="contact.html" style="--i:13;" class="active" data-i18n="nav.contact">聯絡方式</a>
         </nav>
-        
+        <div class="header-actions">
+            <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">EN</button>
+            <div class="toggle">
+                <i class="bx bx-moon toggle-icon"></i>
+            </div>
+        </div>
     </header>
     <div class="container">
         <div class="form">
         <div class="contact-info">
-            <h3 class="title">Let's get in touch</h3>
-            <p class="text">Thank you for reviewing my Portfolio! I hope you will like it. 
-                Here is some of my information, please feel free to contact with me!</p>
+            <h3 class="title" data-i18n="contact.title">讓我們保持聯繫</h3>
+            <p class="text" data-i18n="contact.text">感謝你瀏覽我的作品集！希望你會喜歡。以下是我的聯絡資訊，歡迎隨時與我聯繫！</p>
             <div class="info">
-                <div class="information">
-                    <i class='icon bx bx-current-location'></i>         
-                    <p>525 S Center St, Rexburg, ID 83460</p>
-                </div>
+                
                 <div class="information">
                     <i class='icon bx bx-envelope' ></i>
-                    <p>lilyhuang@byui.edu</p>
-                </div>
-                <div class="information">
-                    <i class='icon bx bx-phone' ></i>
-                    <p>2087571390</p>
+                    <p>huanglily5023@gmail.com</p>
                 </div>
             </div>
             <div class="social-media-contact">
-                <p>Contact with me</p>
+                <p data-i18n="contact.socialText">與我聯繫</p>
                 <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/lily-huang-yl"><i class='bx bxl-linkedin' ></i></a>
-                    <a href="https://github.com/LilyHuang23"><i class='bx bxl-github' ></i></a>
-                    <a href="https://www.instagram.com/iamlilyhuang/"><i class='bx bxl-instagram-alt' ></i></a>                </div>
+                    <a href="https://www.linkedin.com/in/lily-huang-yl" target="_blank" rel="noopener"><i class='bx bxl-linkedin' ></i></a>
+                    <a href="https://github.com/LilyHuang23" target="_blank" rel="noopener"><i class='bx bxl-github' ></i></a>
+                    <a href="https://www.instagram.com/iamlilyhuang/" target="_blank" rel="noopener"><i class='bx bxl-instagram-alt' ></i></a>                </div>
             </div>
         </div>
         <div class="contact-form">
             <form action="contact.html" autocomplete="off">
-                <h3 class="title">Let's get in touch</h3>
+                <h3 class="title" data-i18n="contact.title">讓我們保持聯繫</h3>
                 <div class="input-container focus">
                     <input type="text" name="name" class="input" />
-                    <label for="">Full Name</label>
-                    <span>Full Name</span>
+                    <label for="" data-i18n="label.fullName">姓名</label>
+                    <span data-i18n="label.fullName">姓名</span>
                 </div>
                 <div class="input-container focus">
                     <input type="email" name="email" class="input" />
-                    <label for="">Email</label>
-                    <span>Email</span>
+                    <label for="" data-i18n="label.email">電子郵件</label>
+                    <span data-i18n="label.email">電子郵件</span>
                 </div>
                 <div class="input-container focus">
-                    <input type="phone" name="phone" class="input" />
-                    <label for="">Phone</label>
-                    <span>Phone</span>
+                    <input type="tel" name="phone" class="input" />
+                    <label for="" data-i18n="label.phone">電話</label>
+                    <span data-i18n="label.phone">電話</span>
                 </div>
                 <div class="input-container textarea focus">
                     <textarea name="message" class="input"></textarea>
-                    <label for="">Message</label>
-                    <span>Message</span>
+                    <label for="" data-i18n="label.message">訊息</label>
+                    <span data-i18n="label.message">訊息</span>
                 </div>
-                <input type="submit" value="Send" class="submit-btn" />
+                <input type="submit" value="送出" class="submit-btn" data-i18n-value="submit.btn" />
             </form>
         </div>
     </div>

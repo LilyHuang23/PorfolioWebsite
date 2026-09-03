@@ -1,30 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lily Huang Portfolio Website</title>
+    <title>作品集 - Lily Huang</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
-<body>
+<body data-i18n-title="title.projects">
     <header class="header">
         <a href="index.html" class="logo">Portfolio</a>
+        <i class='bx bx-menu' id="menu-icon"></i>
         <nav class="navbar">
-            <a href="index.html" style="--i:10;" class="active">Home</a>
-            <!-- <a href="#" style="--i:12;">Project</a> -->
-            <!-- <a href="resume.html" style="--i:10;" class="active">Resume</a> -->
-            <a href="contact.html" style="--i:13;">Contact</a>
-
+            <a href="index.html" style="--i:10;" data-i18n="nav.home">首頁</a>
+            <a href="project.html" style="--i:11;" class="active" data-i18n="nav.projects">作品集</a>
+            <a href="resume.html" style="--i:12;" data-i18n="nav.resume">履歷</a>
+            <a href="contact.html" style="--i:13;" data-i18n="nav.contact">聯絡方式</a>
         </nav>
-        <div class="toggle">
-            <i class="bx bx-moon toggle-icon"></i>
-
+        <div class="header-actions">
+            <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">EN</button>
+            <div class="toggle">
+                <i class="bx bx-moon toggle-icon"></i>
+            </div>
         </div>
     </header>
-   
+
+    <section class="projects-section">
+        <div class="section-heading">
+            <h1 data-i18n="projects.heading">我的作品集</h1>
+            <p data-i18n="projects.subheading">這裡收錄了我開發過的一些網站與工具專案。</p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card" style="--i:1;">
+                <div class="project-icon"><i class='bx bx-map'></i></div>
+                <span class="project-year">2026</span>
+                <h3 data-i18n="project.p1.title">大阪旅遊手冊</h3>
+                <p data-i18n="project.p1.desc">完全使用 Claude AI 開發的大阪旅遊手冊，整理行程規劃、景點與美食資訊。</p>
+                <div class="tech-tags"><span>Claude AI</span></div>
+                <div class="project-links">
+                    <a href="https://lilyhuang23.github.io/kansai-trip" class="project-link" target="_blank" rel="noopener">
+                        <i class='bx bx-link-external'></i> <span data-i18n="project.viewDemo">查看展示</span>
+                    </a>
+                    <a href="https://github.com/LilyHuang23/kansai-trip" class="project-link" target="_blank" rel="noopener">
+                        <i class='bx bxl-github'></i> <span data-i18n="project.viewCode">查看程式碼</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card" style="--i:2;">
+                <div class="project-icon"><i class='bx bx-store'></i></div>
+                <span class="project-year">2026</span>
+                <h3 data-i18n="project.p2.title">KOKAKU 商業網站</h3>
+                <p data-i18n="project.p2.desc">使用 Vue 3 開發的商業網站，目前正在準備串接金流服務。</p>
+                <div class="tech-tags"><span>Vue 3</span></div>
+                <a href="https://lilyhuang23.github.io/KOKAKU/" class="project-link" target="_blank" rel="noopener">
+                    <i class='bx bx-link-external'></i> <span data-i18n="project.viewDemo">查看展示</span>
+                </a>
+            </div>
+
+            <div class="project-card" style="--i:3;">
+                <div class="project-icon"><i class='bx bx-calculator'></i></div>
+                <span class="project-year">2025</span>
+                <h3 data-i18n="project.p3.title">甜點成本計算機</h3>
+                <p data-i18n="project.p3.desc">使用 HTML、CSS、JavaScript 開發的甜點成本計算工具，未來計畫擴充為完整的後台管理系統。</p>
+                <div class="tech-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                <div class="project-links">
+                    <a href="https://lilyhuang23.github.io/CostCalculator/" class="project-link" target="_blank" rel="noopener">
+                        <i class='bx bx-link-external'></i> <span data-i18n="project.viewDemo">查看展示</span>
+                    </a>
+                    <a href="https://github.com/LilyHuang23/CostCalculator" class="project-link" target="_blank" rel="noopener">
+                        <i class='bx bxl-github'></i> <span data-i18n="project.viewCode">查看程式碼</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card" style="--i:4;">
+                <div class="project-icon"><i class='bx bx-dice-6'></i></div>
+                <span class="project-year">2023</span>
+                <h3 data-i18n="project.p4.title">Round Table Games 商業網站</h3>
+                <p data-i18n="project.p4.desc">使用 WordPress 架設的商業網站專案。</p>
+                <div class="tech-tags"><span>WordPress</span></div>
+                <a href="https://roundtablegamesif.com/" class="project-link" target="_blank" rel="noopener">
+                    <i class='bx bx-link-external'></i> <span data-i18n="project.viewSite">查看網站</span>
+                </a>
+            </div>
+
+            <div class="project-card" style="--i:5;">
+                <div class="project-icon"><i class='bx bx-book-open'></i></div>
+                <span class="project-year">2023</span>
+                <h3 data-i18n="project.p5.title">SewingMaster 部落格</h3>
+                <p data-i18n="project.p5.desc">套用模板打造的裁縫主題部落格網站。</p>
+                <div class="tech-tags"><span>Blog</span><span>Template</span></div>
+                <a href="https://github.com/LilyHuang23/SewingMaster" class="project-link" target="_blank" rel="noopener">
+                    <i class='bx bxl-github'></i> <span data-i18n="project.viewCode">查看程式碼</span>
+                </a>
+            </div>
+
+            <div class="project-card" style="--i:6;">
+                <div class="project-icon"><i class='bx bx-globe'></i></div>
+                <span class="project-year">2021</span>
+                <h3 data-i18n="project.p6.title">Wix 個人網站</h3>
+                <p data-i18n="project.p6.desc">使用 Wix 架設的個人網站作品。</p>
+                <div class="tech-tags"><span>Wix</span></div>
+                <a href="https://l613426210.wixsite.com/website" class="project-link" target="_blank" rel="noopener">
+                    <i class='bx bx-link-external'></i> <span data-i18n="project.viewSite">查看網站</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p data-i18n="footer.text">© 2026 Lily Huang. All rights reserved.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

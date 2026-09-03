@@ -1,30 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lily Huang Portfolio Website</title>
+    <title>我的履歷 - Lily Huang</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
-<body>
+<body data-i18n-title="title.resume">
     <header class="header">
         <a href="index.html" class="logo">Portfolio</a>
+        <i class='bx bx-menu' id="menu-icon"></i>
         <nav class="navbar">
-            <a href="index.html" style="--i:10;" class="active">Home</a>
-            <a href="#" style="--i:12;">Project</a>
-            <a href="index.html" style="--i:10;" class="active">Home</a>
-            <a href="contact.html" style="--i:13;">Contact</a>
-
+            <a href="index.html" style="--i:10;" data-i18n="nav.home">首頁</a>
+            <a href="project.html" style="--i:11;" data-i18n="nav.projects">作品集</a>
+            <a href="resume.html" style="--i:12;" class="active" data-i18n="nav.resume">履歷</a>
+            <a href="contact.html" style="--i:13;" data-i18n="nav.contact">聯絡方式</a>
         </nav>
-        <div class="toggle">
-            <i class="bx bx-moon toggle-icon"></i>
-
+        <div class="header-actions">
+            <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">EN</button>
+            <div class="toggle">
+                <i class="bx bx-moon toggle-icon"></i>
+            </div>
         </div>
     </header>
-   
+
+    <section class="resume-section">
+        <h1 data-i18n="resume.heading">我的履歷</h1>
+        <p data-i18n="resume.subheading">以下是我的履歷預覽，你也可以點擊下方按鈕在 Google 雲端硬碟中開啟或下載完整版本。</p>
+
+        <div class="resume-frame-wrap">
+            <iframe src="https://drive.google.com/file/d/1jkkxPbtV2b5CWmhsW-RQtrrU8HbSxujV/preview" allow="autoplay" title="Resume preview"></iframe>
+        </div>
+
+        <a href="https://drive.google.com/file/d/1jkkxPbtV2b5CWmhsW-RQtrrU8HbSxujV/view?usp=sharing" class="btn" target="_blank" rel="noopener" data-i18n="resume.openBtn">在 Google 雲端硬碟開啟</a>
+    </section>
+
+    <footer class="footer">
+        <p data-i18n="footer.text">© 2026 Lily Huang. All rights reserved.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

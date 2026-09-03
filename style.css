@@ -9,15 +9,24 @@
     --primary-color:#fff;
     --secondary-color:#333;
     --main-color:#fba4d8;
+    --card-bg:#ffffff;
+    --tag-bg:rgba(251,164,216,.15);
+    --shadow-color:rgba(0,0,0,.08);
+    --border-color:rgba(0,0,0,.1);
 }
 .dark-mode{
     --primary-color:#515154;
     --secondary-color:#fff;
+    --card-bg:#3a3a3d;
+    --tag-bg:rgba(251,164,216,.18);
+    --shadow-color:rgba(0,0,0,.3);
+    --border-color:rgba(255,255,255,.12);
 }
 body{
     background-color: var(--primary-color);
     color: var(--secondary-color);
     overflow-x: hidden;
+    transition: background-color .3s ease, color .3s ease;
 }
 .header{
     position: fixed;
@@ -60,6 +69,41 @@ body{
     width: 100%;
     height: 2px;
     background: #fff;
+}
+#menu-icon{
+    font-size: 32px;
+    color: var(--secondary-color);
+    cursor: pointer;
+    display: none;
+    z-index: 10001;
+}
+.header-actions{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+.lang-toggle{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    padding: 6px 12px;
+    background: transparent;
+    border: 2px solid var(--main-color);
+    border-radius: 20px;
+    color: var(--secondary-color);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 3s;
+    transition: .3s;
+}
+.lang-toggle:hover{
+    background: var(--main-color);
+    color: #fff;
 }
 .toggle{
     display:flex;
@@ -113,7 +157,7 @@ body{
     background:transparent;
     border: 2px solid var(--main-color);
     border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0,0,0,2);
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
     font-size: 20px;
     color:var(--main-color);
     text-decoration: none;
@@ -151,10 +195,20 @@ body{
     position: absolute;
     top:0;
     right: 0;
-    transform: translateY();
     width: 768px;
     height: 786px;
     overflow: hidden;
+}
+/* home-img is 43vw wide but profession-container is a fixed 768px, both
+   pinned to the right edge - on wide screens the image outgrows the
+   circle and covers the rotating caption text. Nudge the circle left
+   only once that starts happening (the math below is the exact point
+   where the two would start to overlap), so narrower desktop widths
+   (where shifting left would instead crowd the hero text) are untouched. */
+@media (min-width: 1440px){
+    .home .profession-container{
+        right: clamp(0px, calc(43vw - 600px), 700px);
+    }
 }
 .profession-container .profession-box{
     position: absolute;
@@ -206,16 +260,25 @@ body{
     border: 3px solid var(--main-color);
     border-radius: 50%;
 } 
-.profession-container .overlay{
+/* .overlay used to live inside .profession-container, but that box has a
+   fixed height + overflow:hidden (needed to clip the rotating captions),
+   which was silently clipping this backdrop back down to 786px no matter
+   how tall we made it. It's now a sibling of .profession-container instead,
+   positioned the same way (top/right relative to the viewport, matching
+   home-img) but free of that clipping. */
+.home .overlay{
     position: absolute;
     top: 0;
     right: 0;
-    width: 0;
-    height: 0;
-    border-top: 384px solid var(--main-color);
-    border-right: 384px solid var(--main-color);
-    border-bottom: 384px solid var(--main-color);
-    border-left: 384px solid transparent;
+    width: 768px;
+    /* home-img is a tall portrait photo scaled by viewport width (43vw),
+       so on wide screens it grows taller than this backdrop's original
+       fixed 768px - keep the backdrop's height tied to the same 43vw
+       scaling (plus the photo's aspect ratio and its 95px top offset,
+       with a little buffer) so the pink never runs out before the photo does. */
+    height: calc(55vw + 115px);
+    background: var(--main-color);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 50% 50%);
     opacity: 0;
     animation: slideLeft 1s ease forwards;
     animation-delay: 1.5s;
@@ -241,8 +304,8 @@ textarea{
     position: relative;
     width: 100%;
     min-height: 100vh;
-    padding: 2rem;
-    background-color: #fafafa;
+    padding: 130px 2rem 3rem;
+    background-color: var(--primary-color);
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -251,9 +314,9 @@ textarea{
 .form{
     width: 100%;
     max-width: 820px;
-    background-color: #fff;
+    background-color: var(--card-bg);
     border-radius: 10px;
-    box-shadow: 0 0 20px 1px rgba(0,0,0, .1);
+    box-shadow: 0 0 20px 1px var(--shadow-color);
     z-index: 1000;
     overflow: hidden;
     display: grid;
@@ -386,12 +449,13 @@ textarea.input {
     color: #fba4d8;
 }
 .text{
-    color: #333;
+    color: var(--secondary-color);
     margin: 1.5rem 0 2rem 0;
 }
 .information{
     display: flex;
-    color: #555;
+    color: var(--secondary-color);
+    opacity: .85;
     margin: 0.7rem 0;
     align-items: center;
     font-size: 0.95rem;
@@ -406,7 +470,7 @@ textarea.input {
     padding: 2rem 0 0 0;
 }
 .social-media-contact p {
-    color: #333;
+    color: var(--secondary-color);
 }
 .social-icons{
     display: flex;
@@ -476,7 +540,267 @@ textarea.input {
     .form{
         grid-template-columns: 1fr;
     }
-    
-    
+
+
+}
+
+/* Projects (Portfolio) page */
+.projects-section{
+    padding: 130px 7% 80px;
+    min-height: 100vh;
+}
+.section-heading{
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 50px;
+}
+.section-heading h1{
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: .3s;
+}
+.section-heading p{
+    font-size: 16px;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: .5s;
+}
+.projects-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.project-card{
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: transform .3s ease, box-shadow .3s ease;
+    opacity: 0;
+    animation: slideTop .8s ease forwards;
+    animation-delay: calc(.15s * var(--i));
+}
+.project-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 14px 30px var(--shadow-color);
+}
+.project-card .project-icon{
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: var(--main-color);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin-bottom: 16px;
+}
+.project-card .project-year{
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--main-color);
+}
+.project-card h3{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 6px 0 10px;
+}
+.project-card p{
+    font-size: 14.5px;
+    line-height: 1.7;
+    opacity: .85;
+    flex-grow: 1;
+}
+.tech-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0;
+}
+.tech-tags span{
+    background: var(--tag-bg);
+    color: var(--main-color);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+.project-link{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    align-self: flex-start;
+    margin-top: auto;
+    padding: 8px 18px;
+    border: 2px solid var(--main-color);
+    border-radius: 20px;
+    color: var(--main-color);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    transition: .3s;
+}
+/* Cards with both a live demo and a source-code link wrap both
+   .project-link buttons in here instead of using .project-link alone. */
+.project-links{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto;
+}
+.project-links .project-link{
+    margin-top: 0;
+    align-self: auto;
+}
+.project-link:hover{
+    background: var(--main-color);
+    color: #fff;
+}
+
+/* Resume page */
+.resume-section{
+    padding: 130px 7% 80px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.resume-section h1{
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: .3s;
+}
+.resume-section > p{
+    max-width: 560px;
+    font-size: 16px;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: .5s;
+}
+.resume-frame-wrap{
+    width: 100%;
+    max-width: 700px;
+    margin: 30px 0;
+    padding: 12px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    box-shadow: 0 4px 20px var(--shadow-color);
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: .7s;
+}
+.resume-frame-wrap iframe{
+    width: 100%;
+    height: 560px;
+    border: none;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Shared footer */
+.footer{
+    text-align: center;
+    padding: 25px 7% 30px;
+    font-size: 13px;
+    opacity: .7;
+}
+
+/* Responsive navigation & layout */
+@media (max-width: 991px){
+    .header{
+        padding: 20px 4%;
+    }
+    .home, .projects-section, .resume-section, .container{
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+}
+
+@media (max-width: 768px){
+    #menu-icon{
+        display: block;
+        order: 3;
+    }
+    .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        padding: 20px 6%;
+        background: var(--primary-color);
+        border-top: 1px solid var(--border-color);
+        box-shadow: 0 10px 20px var(--shadow-color);
+    }
+    .navbar.active{
+        display: flex;
+    }
+    .navbar a{
+        margin-right: 0;
+    }
+    .header-actions{
+        order: 2;
+    }
+    .home{
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        padding-top: 130px;
+        padding-bottom: 60px;
+        text-align: center;
+    }
+    .home .home-content{
+        max-width: 100%;
+        order: 2;
+    }
+    .home .social-media,
+    .home .btn{
+        justify-content: center;
+    }
+    .home .social-media{
+        display: flex;
+        justify-content: center;
+    }
+    .home-img{
+        position: static;
+        order: 1;
+        margin-bottom: 20px;
+    }
+    .home-img img{
+        position: static;
+        width: 55%;
+        margin: 0 auto;
+        display: block;
+        animation-delay: 1s;
+    }
+    .projects-grid{
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Between ~769px and 1365px there isn't enough width for the fixed-size
+   rotating caption to sit between the hero text and the profile photo
+   without overlapping one of them - hide the decorative circle in that
+   range too (same treatment as mobile) and just show the photo. */
+@media (max-width: 1365px){
+    .home .profession-container,
+    .home .overlay{
+        display: none;
+    }
 }
   

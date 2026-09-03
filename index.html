@@ -1,59 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lily Huang Portfolio Website</title>
+    <title>Lily Huang 作品集網站</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
-<body>
+<body data-i18n-title="title.home">
     <header class="header">
         <a href="index.html" class="logo">Portfolio</a>
+        <i class='bx bx-menu' id="menu-icon"></i>
         <nav class="navbar">
-            <a href="index.html" style="--i:10;" class="active">Home</a>
-            <!-- <a href="#" style="--i:12;">Project</a> -->
-            <a href="contact.html" style="--i:13;">Contact</a>
-
+            <a href="index.html" style="--i:10;" class="active" data-i18n="nav.home">首頁</a>
+            <a href="project.html" style="--i:11;" data-i18n="nav.projects">作品集</a>
+            <a href="resume.html" style="--i:12;" data-i18n="nav.resume">履歷</a>
+            <a href="contact.html" style="--i:13;" data-i18n="nav.contact">聯絡方式</a>
         </nav>
-        <div class="toggle">
-            <i class="bx bx-moon toggle-icon"></i>
-
+        <div class="header-actions">
+            <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">EN</button>
+            <div class="toggle">
+                <i class="bx bx-moon toggle-icon"></i>
+            </div>
         </div>
     </header>
     <section class="home">
         <div class="home-content">
-            <h3>Hi, I am</h3>
+            <h3 data-i18n="home.greeting">嗨，我是</h3>
             <h1>Lily Huang</h1>
-            <p>Welcome to my Portfolio website!</p>
-        
+            <p data-i18n="home.welcome">歡迎來到我的作品集網站！</p>
+
         <div class="social-media">
-            <a href="https://www.linkedin.com/in/lily-huang-yl" style="--i:7;"><i class='bx bxl-linkedin' ></i></a>
-            <a href="https://github.com/LilyHuang23" style="--i:8;"><i class='bx bxl-github' ></i></a>
-            <a href="https://www.instagram.com/iamlilyhuang/" style="--i:9;"><i class='bx bxl-instagram-alt' ></i></a>
+            <a href="https://www.linkedin.com/in/lily-huang-yl" style="--i:7;" target="_blank" rel="noopener"><i class='bx bxl-linkedin' ></i></a>
+            <a href="https://github.com/LilyHuang23" style="--i:8;" target="_blank" rel="noopener"><i class='bx bxl-github' ></i></a>
+            <a href="https://www.instagram.com/iamlilyhuang/" style="--i:9;" target="_blank" rel="noopener"><i class='bx bxl-instagram-alt' ></i></a>
         </div>
-        <a href="https://drive.google.com/file/d/1jkkxPbtV2b5CWmhsW-RQtrrU8HbSxujV/view?usp=sharing" class="btn">View Resume</a>
+        <a href="https://drive.google.com/file/d/1jkkxPbtV2b5CWmhsW-RQtrrU8HbSxujV/view?usp=sharing" class="btn" target="_blank" rel="noopener" data-i18n="home.viewResume">查看履歷</a>
         </div>
         <div class="profession-container">
             <div class="profession-box">
                 <div class="profession" style="--i:0;">
                     <i class='bx bx-code-alt' ></i>
-                    <h3>Web developer</h3>
+                    <h3 data-i18n="profession.web">網頁開發者</h3>
                 </div>
                 <div class="profession" style="--i:1;">
                     <i class='bx bx-desktop'></i>
-                    <h3>Software Engineer</h3>
+                    <h3 data-i18n="profession.engineer">軟體工程師</h3>
                 </div>
                 <div class="profession" style="--i:2;">
                     <i class='bx bx-closet'></i>
-                     <h3>Fashion Designer</h3>
+                     <h3 data-i18n="profession.designer">服裝設計師</h3>
                 </div>
                 <div class="circle"></div>
             </div>
-            <div class="overlay"></div>
         </div>
+        <div class="overlay"></div>
             <div class="home-img">
                 <img src="profile.png" alt="profile">
             </div>
